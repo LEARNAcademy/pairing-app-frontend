@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import CohortDropdown from '../components/CohortDropdown'
 import CreateStudentsModal from '../components/CreateStudentsModal'
-import CreatePairs from '../components/CreatePairs'
+import CreatePairs from './CreatePairs'
 import { NavLink } from 'react-router-dom'
 
 
@@ -42,8 +42,13 @@ useEffect(() => {
             <div key={activity.id}>
               <h5>{activity.name}</h5>
               <button>
-                <NavLink to={`/createpairs/${activity.id}`}>
-                  Create Pair
+                <NavLink className="nav-plain" to={`/createpairs/${activity.id}`}>
+                  Create Pairs
+                </NavLink>
+              </button>
+              <button>
+                <NavLink className="nav-plain" to={`/updatepairs/${activity.id}`}>
+                  Update Pairs
                 </NavLink>
               </button>
               <ul>

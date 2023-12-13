@@ -8,7 +8,9 @@ import Header from './components/Header'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Activities from './pages/Activities'
-import CreatePairs from './components/CreatePairs';
+import CreatePairs from './pages/CreatePairs';
+import UpdatePairs from './pages/UpdatePairs'
+import './App.css'
 
 const App = () => {
   const [currUser, setCurrUser] = useState(true);
@@ -167,14 +169,15 @@ const App = () => {
           <Route path="/login" element={<Login login={login}/>} />
           <Route path="/signup" element={<Signup signup={signup}/>} />
           <Route path="/createpairs/:id" element={
-              <CreatePairs 
-                  selectedCohort={selectedCohort}
-                  currentCohort={currentCohort}
-                  activities={activities}
-                  students={students}
-                  createPair={createPair}
-                />
-                }/>
+            <CreatePairs 
+                selectedCohort={selectedCohort}
+                currentCohort={currentCohort}
+                activities={activities}
+                students={students}
+                createPair={createPair}
+              />
+          }/>
+          <Route path="/updatepairs/:id" element={<UpdatePairs selectedCohort={selectedCohort} currentCohort={currentCohort} activities={activities} students={students} />}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       <Footer />
