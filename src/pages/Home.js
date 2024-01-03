@@ -5,7 +5,7 @@ import CreatePairs from './CreatePairs'
 import { NavLink } from 'react-router-dom'
 
 
-const Home = ({ readCohorts, currentCohort, current_user, selectedCohort, cohorts, students, activities, createCohort, createStudent }) => {
+const Home = ({ readCohorts, currentCohort, current_user, selectedCohort, cohorts, activities, createCohort, createStudent }) => {
   const [studentModal, setStudentModal] = useState(false);
 
   const studentModalToggle = () => setStudentModal(!studentModal);
@@ -13,6 +13,10 @@ const Home = ({ readCohorts, currentCohort, current_user, selectedCohort, cohort
 useEffect(() => {
   readCohorts()
 }, [])
+
+const handleCreateStudent = async (newStudent) => {
+  await createStudent(newStudent, selectedCohort?.id)
+}
 
   return (
     <>
@@ -26,11 +30,15 @@ useEffect(() => {
         <h3>{selectedCohort?.name} {selectedCohort?.year}</h3>
         <h3>Students:</h3>
         <button onClick={studentModalToggle}>Add Students</button>
+        <button>
+          <NavLink to={"/editstudents"}>Edit Students</NavLink>
+        </button>
         <CreateStudentsModal 
           studentModal={studentModal} 
           studentModalToggle={studentModalToggle} 
           createStudent ={createStudent} 
-          selectedCohort={selectedCohort}/>
+          selectedCohort={selectedCohort}
+          handleCreateStudent={handleCreateStudent}/>
         <ul>
           {selectedCohort.students?.map((student, index)=> {
             return <li key={index}>{student.first_name} {student.last_name}</li>

@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { Button, Modal, Form, FormGroup, Label, Input } from 'reactstrap';
 
-const CreateStudentsModal = ({studentModal, studentModalToggle, createStudent, selectedCohort}) => {
+const CreateStudentsModal = ({studentModal, studentModalToggle, selectedCohort, handleCreateStudent}) => {
+  const navigate = useNavigate()
   const [newStudent, setNewStudent] = useState({
     first_name: "",
     last_name: ""
@@ -12,8 +14,8 @@ const CreateStudentsModal = ({studentModal, studentModalToggle, createStudent, s
   }
 
   const handleSubmit = () => {
-    createStudent(newStudent, selectedCohort?.id)
-    setNewStudent({first_name: "", last_name: ""})
+      handleCreateStudent(newStudent)
+      setNewStudent({first_name: "", last_name: ""})
   }
 
   return (

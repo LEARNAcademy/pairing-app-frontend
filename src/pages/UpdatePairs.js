@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   Button,
   Modal,
@@ -11,8 +11,9 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-const UpdatePairs = ({ selectedCohort, activities }) => {
+const UpdatePairs = ({ selectedCohort, activities, editPairs, createPair }) => {
   const { id } = useParams();
+  const navigate = useNavigate()
   let activity = activities?.find((activity) => activity.id === +id);
 
   // Sets array of pair objects associated only to the selected activity and selectd cohort (pairs only have student id association)
@@ -35,6 +36,55 @@ const UpdatePairs = ({ selectedCohort, activities }) => {
 
   const [unPairedStudents, setUnpairedStudents] = useState([]);
   const [activityPairs, setActivityPairs] = useState(groups);
+  const [editActivityPairs, setEditActivityPairs] = useState([])
+  const [newPair, setNewPair] = useState({
+    activity_id: activity?.id,
+    cohort_id: selectedCohort?.id,
+    student_one_id: null,
+    student_two_id: null
+  })
+
+  // console.log(activityPairs)
+  // console.log(filteredActivityPairs)
+
+  const handleSubmit = () => {
+    // Create new pair if pair did not exist before
+    let checkNewGroup = activityPairs?.length - filteredActivityPairs?.length
+    if(checkNewGroup > 0) {
+      let newGroups = activityPairs.splice(-checkNewGroup, activityPairs.length - 1)
+      let setNewGroups = newGroups?.map((group, index) => {
+        return {
+          activity_id: activity?.id,
+          cohort_id: selectedCohort?.id,
+          student_one_id: group[0]?.id,
+          student_two_id: group[1]?.id,
+        };
+      })
+      setNewGroups?.forEach(group => createPair(group))
+    }
+    // Check if activity.pairs exists and is an array
+    if (filteredActivityPairs && Array.isArray(filteredActivityPairs)) {
+      // Use map to update student_one_id and student_two_id
+      let updatedActivity = filteredActivityPairs.map((pair, index) => {
+        // Create a new object with only the desired attributes modified
+        return {
+          activity_id: activity?.id,
+          cohort_id: selectedCohort?.id,
+          student_one_id: activityPairs[index]?.[0]?.id || pair.student_one_id,
+          student_two_id: activityPairs[index]?.[1]?.id || pair.student_two_id,
+        };
+      });
+      // Call your editPairs function with the updated activity
+      console.log(updatedActivity)
+      editPairs(updatedActivity, activity, filteredActivityPairs);
+    } else {
+      // Handle the case where activity.pairs is undefined or not an array
+      console.error("Invalid activity.pairs");
+    }
+    navigate("/")
+  };
+  
+  
 
   // Default values for draggable elements
   const dragPerson = useRef([]);
@@ -220,6 +270,7 @@ const UpdatePairs = ({ selectedCohort, activities }) => {
           })}
       </ul>
       <button onClick={addGroup}>Add group</button>
+      <button onClick={handleSubmit}>Submit</button>
       <h4>Unpaired Students:</h4>
       <ul>
         {unPairedStudents?.map((student, index) => {
