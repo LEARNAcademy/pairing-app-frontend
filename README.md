@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+# Pairing App Frontend
+As developers, we're always on the lookout for tools that can make our work easier. And if we can't find those tools, we create them ourselves! That's exactly how this pairing randomizer application started. Although this application is still in development, the goal of this app is to make life easier for instructors by helping them organize and manage their classrooms effortlessly. It takes care of maintaining and optimizing pairs, so instructors can focus on what they do best!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Wireframe
+Planning is an important step in the process of development. This application has many pieces to create a cohesive application. One of the most important pieces is to have a structured design to streamline development. You can find the Figma wireframe [here](https://www.figma.com/file/F5acwOsQiA7CEd9S6PrzQW/Pairing-Randomizer?type=design&node-id=0%3A1&mode=design&t=BAEZG77mV7rjNFDq-1)
 
-## Available Scripts
+## Structure
+The frontend consists of a standard React application. Inside the root directory contains the src folder where you can find assets, components, and pages. These folders are where the magic happens along with App.js that is the nerve center of it all.
 
-In the project directory, you can run:
+## Run Locally
+To get this app up and running on your computer, follow the below steps:
+- clone application
+- `cd pairing-app-frontend`
+- `yarn`
+- `yarn start`
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  * Please note that this is only the frontend application to a decoupled full stack application. You will also need the [pairing-app-backend repo](https://github.com/LEARNAcademy/pairing-app-backend)
