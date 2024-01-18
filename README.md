@@ -14,4 +14,4 @@ To get this app up and running on your computer, follow the below steps:
 - `yarn`
 - `yarn start`
 
-  * Please note that this is only the frontend application to a decoupled full stack application. You will also need the [pairing-app-backend repo](https://github.com/LEARNAcademy/pairing-app-backend)
+** Please note that this is only the frontend application to a decoupled full stack application. You will also need the [pairing-app-backend repo](https://github.com/LEARNAcademy/pairing-app-backend)
